@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8">
+
+    <ImageView
+        android:id="@+id/tv_background_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_15dp"
+        android:contentDescription="@string/image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_image" />
+
+    <ImageView
+        android:id="@+id/iv_profile_call"
+        android:layout_width="@dimen/_70dp"
+        android:layout_height="@dimen/_70dp"
+        android:contentDescription="@string/background"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_background_img"
+        app:layout_constraintEnd_toEndOf="@+id/tv_background_img"
+        app:layout_constraintStart_toStartOf="@+id/tv_background_img"
+        app:layout_constraintTop_toTopOf="@+id/tv_background_img"
+        app:srcCompat="@drawable/profil" />
+
+    <TextView
+        android:id="@+id/tv_call_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7dp"
+        android:layout_marginBottom="@dimen/_25dp"
+        android:text="@string/name"
+        android:textColor="#2D303E"
+        android:textSize="@dimen/_16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_background_img"
+        app:layout_constraintStart_toEndOf="@+id/tv_background_img"
+        app:layout_constraintTop_toTopOf="@+id/tv_background_img" />
+
+    <TextView
+        android:id="@+id/tv_time_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_15dp"
+        android:text="@string/time"
+        android:textColor="#2D303E"
+        android:textSize="@dimen/_14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_background_img"
+        app:layout_constraintStart_toStartOf="@+id/tv_call_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_call_name" />
+
+    <ImageView
+        android:id="@+id/iv_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25dp"
+        android:contentDescription="@string/line"
+        app:layout_constraintStart_toStartOf="@+id/tv_time_call"
+        app:layout_constraintTop_toBottomOf="@+id/tv_time_call"
+        app:srcCompat="@drawable/line" />
+
+    <Button
+        android:id="@+id/btn_call"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:background="@drawable/circle_call"
+        android:drawableTop="@drawable/videocall_icon"
+        android:paddingTop="@dimen/_10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_background_img"
+        app:layout_constraintEnd_toEndOf="@+id/iv_line"
+        app:layout_constraintTop_toTopOf="@+id/tv_background_img" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

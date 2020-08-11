@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "907505649234",
+    "firebase_url": "https://cetup-app.firebaseio.com",
+    "project_id": "cetup-app",
+    "storage_bucket": "cetup-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907505649234:android:db684e3f54ac4a7261418b",
+        "android_client_info": {
+          "package_name": "com.sitiaisyah.idn.cetupapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907505649234-75ohpkasfirvigk9hnl4688it4km0q0c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitiaisyah.idn.cetupapp",
+            "certificate_hash": "5321a8996157d36b0e47e01bb0c927a91131a07a"
+          }
+        },
+        {
+          "client_id": "907505649234-rrgqjhmak08aufkr95haacdevj1fog8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2hpWrRrHLd4qhKXnKRFPHyO5vBsAkYdI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907505649234-rrgqjhmak08aufkr95haacdevj1fog8n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

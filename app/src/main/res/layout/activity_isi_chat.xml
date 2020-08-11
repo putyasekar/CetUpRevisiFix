@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e6e6e6"
+    tools:context=".activity.IsiChatActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/barLayout_message_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_message_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimaryDark"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image_mchat"
+                android:layout_width="@dimen/_32dp"
+                android:layout_height="@dimen/_32dp"
+                android:src="@drawable/profile" />
+
+            <TextView
+                android:id="@+id/tv_username_mchat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_26dp"
+                android:text="@string/text_user_name"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/more"
+                android:layout_width="@dimen/_20dp"
+                android:layout_height="@dimen/_20dp"
+                android:layout_marginStart="245dp"
+                android:src="@drawable/morered" />
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_chats"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/relative_layout_bottom"
+        android:layout_below="@+id/barLayout_message_chat">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:padding="@dimen/_6dp">
+
+        <ImageView
+            android:id="@+id/iv_attact_image_file_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/attachone" />
+
+        <EditText
+            android:id="@+id/et_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="@dimen/_6dp"
+            android:layout_toRightOf="@id/iv_attact_image_file_btn"
+            android:background="@android:color/transparent"
+            android:hint="@string/write_message_here" />
+
+        <ImageView
+            android:id="@+id/iv_send_message"
+            android:layout_width="@dimen/_30dp"
+            android:layout_height="@dimen/_30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/send" />
+    </RelativeLayout>
+</RelativeLayout>
