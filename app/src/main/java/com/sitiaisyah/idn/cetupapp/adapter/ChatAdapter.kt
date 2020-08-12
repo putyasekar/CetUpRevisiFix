@@ -111,7 +111,7 @@ class ChatAdapter(mContext: Context, mChatList: List<ModelUser>, imageUrl: Strin
                     val option = arrayOf<CharSequence>(
                         "Delete message", "Cancel"
                     )
-                    //manggil builder untuk allert dialog
+
                     val builder: AlertDialog.Builder = AlertDialog.Builder(holder.itemView.context)
                     builder.setTitle("What do you want ?")
                     builder.setItems(option, DialogInterface.OnClickListener { dialog, which ->

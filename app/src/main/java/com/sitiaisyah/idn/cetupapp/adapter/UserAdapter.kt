@@ -66,7 +66,6 @@ class UserAdapter(mContext: Context, mUsers: List<Users>, isChatCheck: Boolean) 
             }
         }
 
-        //when you have a bad conection
         else {
             holder.onlineStatus.visibility = View.GONE
             holder.offlineStatus.visibility = View.GONE
@@ -101,7 +100,7 @@ class UserAdapter(mContext: Context, mUsers: List<Users>, isChatCheck: Boolean) 
             .reference.child("Chats")
         reference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
-                //
+
             }
 
             override fun onDataChange(snapshots: DataSnapshot) {
