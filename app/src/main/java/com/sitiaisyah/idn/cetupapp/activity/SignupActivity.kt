@@ -3,6 +3,7 @@ package com.sitiaisyah.idn.cetupapp.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +21,11 @@ class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
 
         val toolBar: Toolbar = findViewById(R.id.toolbar_signup)
         setSupportActionBar(toolBar)
@@ -64,17 +70,18 @@ class SignupActivity : AppCompatActivity() {
                     val userHashMap = HashMap<String, Any>()
                     userHashMap["uid"] = firebaseUserID
                     userHashMap["username"] = username
-                    userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/cetup-app.appspot.com/o/profile.png?alt=media&token=2502475d-856d-477f-a2f4-f7c20803a2da"
-                    userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/cetup-app.appspot.com/o/cover.jpg?alt=media&token=1e388f8a-4a4c-47bc-8892-2379e3f00ad6"
+                    userHashMap["profile"] =
+                        "https://firebasestorage.googleapis.com/v0/b/cetup-app.appspot.com/o/profile.png?alt=media&token=2502475d-856d-477f-a2f4-f7c20803a2da"
+                    userHashMap["cover"] =
+                        "https://firebasestorage.googleapis.com/v0/b/cetup-app.appspot.com/o/cover.jpg?alt=media&token=1e388f8a-4a4c-47bc-8892-2379e3f00ad6"
                     userHashMap["status"] = "offline"
                     userHashMap["search"] = username.toLowerCase()
                     userHashMap["facebook"] = "https://m.facebook.com"
                     userHashMap["instagram"] = "https://m.instagram.com"
                     userHashMap["website"] = "https://wwww.google.com"
 
-                    refUsers.updateChildren(userHashMap).addOnCompleteListener {
-                            task ->
-                        if (task.isSuccessful){
+                    refUsers.updateChildren(userHashMap).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
                             val intent = Intent(this, MainActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
