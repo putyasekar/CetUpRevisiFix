@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/cv_profile_"
-            android:layout_width="@dimen/_130dp"
-            android:layout_height="@dimen/_130dp"
+            android:layout_width="@dimen/_120dp"
+            android:layout_height="@dimen/_120dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_15dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/profile" />
+            android:src="@drawable/profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_username_"
@@ -24,20 +28,23 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/cv_profile_"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:fontFamily="@font/avanir5"
             android:text="@string/text_user_name"
             android:textColor="@android:color/black"
             android:textSize="@dimen/_28sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/cv_profile_"
+            app:layout_constraintStart_toStartOf="@+id/cv_profile_"
+            app:layout_constraintTop_toBottomOf="@+id/cv_profile_" />
 
         <TextView
             android:id="@+id/tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_username_"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="200dp"
-            android:layout_marginBottom="@dimen/_20dp"
             android:text="@string/text_user_status"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
@@ -46,258 +53,390 @@
             android:id="@+id/info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_status"
-            android:layout_marginLeft="10dp"
-            android:padding="@dimen/_10dp"
+            android:layout_below="@+id/tv_status"
+            android:layout_alignStart="@id/background_myinfo"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="@dimen/_50dp"
+            android:fontFamily="@font/avanir5"
             android:text="@string/info"
             android:textColor="@android:color/black"
-            android:textSize="22sp" />
+            android:textSize="@dimen/_18sp" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_acc"
-            android:layout_width="match_parent"
+
+        <ImageView
+            android:id="@+id/background_myinfo"
+            android:layout_width="335dp"
+            android:layout_height="@dimen/_130dp"
+            android:layout_below="@id/info"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_10dp"
+            android:contentDescription="@string/background"
+            app:srcCompat="@drawable/background_white" />
+
+        <ImageView
+            android:id="@+id/iv_key"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@id/info"
+            android:layout_alignStart="@id/info"
+            android:layout_marginStart="@dimen/_17dp"
+            android:layout_marginTop="@dimen/_35dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/key" />
+
+        <TextView
+            android:id="@+id/acc"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/info"
-
-            android:background="@android:color/white"
-            app:cardCornerRadius="@dimen/_10dp"
-            app:cardElevation="@dimen/_20dp">
-
-            <TextView
-                android:id="@+id/acc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_status"
-                android:layout_marginLeft="10dp"
-                android:drawableLeft="@drawable/key"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:text="@string/acc"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="39dp"
-                android:text="@string/privacy"
-                android:textSize="@dimen/_15dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="65dp"
-                android:drawableLeft="@drawable/keep"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:text="@string/keep"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="110dp"
-                android:paddingBottom="@dimen/_20dp"
-                android:text="@string/privacy"
-                android:textSize="@dimen/_15dp" />
-
-        </androidx.cardview.widget.CardView>
+            android:layout_alignStart="@id/iv_key"
+            android:layout_marginStart="@dimen/_35dp"
+            android:layout_marginTop="@dimen/_30dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/acc"
+            android:textColor="@android:color/black" />
 
         <TextView
-            android:id="@+id/general"
+            android:id="@+id/privacy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cv_acc"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="@dimen/_30dp"
-            android:padding="@dimen/_10dp"
+            android:layout_below="@id/acc"
+            android:layout_alignStart="@id/acc"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/privacy"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sp" />
+
+        <ImageView
+            android:id="@+id/iv_keep"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@id/privacy"
+            android:layout_alignStart="@id/iv_key"
+            android:layout_marginTop="@dimen/_25dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/keep" />
+
+        <TextView
+            android:id="@+id/keep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/privacy"
+            android:layout_alignStart="@id/privacy"
+            android:layout_marginTop="@dimen/_17dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/keep"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/keep1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/keep"
+            android:layout_alignStart="@id/keep"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/keep1"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sp" />
+
+        <TextView
+            android:id="@+id/tv_general_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/background_myinfo"
+            android:layout_alignStart="@id/info"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/avanir5"
             android:text="@string/general"
             android:textColor="@android:color/black"
-            android:textSize="22sp" />
+            android:textSize="@dimen/_18sp" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_general"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/general"
-            android:background="@android:color/white"
-            app:cardCornerRadius="@dimen/_10dp"
-            app:cardElevation="@dimen/_20dp">
+        <ImageView
+            android:id="@+id/background_general_setting"
+            android:layout_width="335dp"
+            android:layout_height="270dp"
+            android:layout_below="@id/tv_general_setting"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10dp"
+            android:contentDescription="@string/background"
+            app:srcCompat="@drawable/background_white" />
 
-            <TextView
-                android:id="@+id/chat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_status"
-                android:layout_marginLeft="10dp"
-                android:drawableLeft="@drawable/chat"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:text="@string/chats"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="39dp"
-                android:text="@string/theme"
-                android:textSize="@dimen/_15dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="65dp"
-                android:drawableLeft="@drawable/notif"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:text="@string/notif"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="110dp"
-                android:text="@string/group"
-                android:textSize="@dimen/_15dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="150dp"
-                android:drawableLeft="@drawable/media"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:text="@string/media"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="190dp"
-                android:text="@string/photos"
-                android:textSize="@dimen/_15dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="230dp"
-                android:drawableLeft="@drawable/friends"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:text="@string/friends"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="270dp"
-                android:text="@string/sync"
-                android:textSize="@dimen/_15dp" />
-
-            <TextView
-                android:id="@+id/bahasa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="310dp"
-                android:drawableLeft="@drawable/bahasa"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:text="@string/bahasa"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
-
-        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/iv_chats"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@id/tv_general_setting"
+            android:layout_alignStart="@id/iv_keep"
+            android:layout_marginTop="@dimen/_35dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/chats" />
 
         <TextView
-            android:id="@+id/others"
+            android:id="@+id/tv_chats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cv_general"
-            android:layout_marginLeft="10dp"
+            android:layout_below="@id/tv_general_setting"
+            android:layout_alignStart="@id/keep1"
+            android:layout_marginStart="@dimen/_10dp"
             android:layout_marginTop="@dimen/_30dp"
-            android:padding="@dimen/_10dp"
-            android:text="@string/others"
-            android:textColor="@android:color/black"
-            android:textSize="22sp" />
+            android:fontFamily="@font/avanir5"
+            android:text="@string/chats"
+            android:textColor="@android:color/black" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_others"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_theme"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/others"
-            android:background="@android:color/white"
-            app:cardCornerRadius="@dimen/_10dp"
-            app:cardElevation="@dimen/_20dp">
+            android:layout_below="@id/tv_chats"
+            android:layout_alignStart="@id/tv_chats"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/theme"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sp" />
 
-            <TextView
-                android:id="@+id/storage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:drawableLeft="@drawable/chat"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:text="@string/storage"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/iv_nontifications"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@id/iv_chats"
+            android:layout_alignStart="@id/iv_chats"
+            android:layout_marginTop="@dimen/_27dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/nontifications" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="39dp"
-                android:text="@string/network"
-                android:textSize="@dimen/_15dp" />
+        <TextView
+            android:id="@+id/tv_nontifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_theme"
+            android:layout_alignStart="@+id/tv_theme"
+            android:layout_marginTop="@dimen/_15dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/notif"
+            android:textColor="@android:color/black" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="65dp"
-                android:drawableLeft="@drawable/help"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:text="@string/help"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
+        <TextView
+            android:id="@+id/tv_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_nontifications"
+            android:layout_alignStart="@id/tv_nontifications"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/group"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="110dp"
-                android:text="@string/helpers"
-                android:textSize="@dimen/_15dp" />
+        <ImageView
+            android:id="@+id/iv_media"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@+id/iv_nontifications"
+            android:layout_alignStart="@id/iv_nontifications"
+            android:layout_marginTop="@dimen/_27dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/media" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="150dp"
-                android:drawableLeft="@drawable/media"
-                android:drawablePadding="@dimen/_15dp"
-                android:padding="@dimen/_10dp"
-                android:paddingBottom="@dimen/_20dp"
-                android:text="@string/delete"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
+        <TextView
+            android:id="@+id/tv_media"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_group"
+            android:layout_alignStart="@id/tv_theme"
+            android:layout_marginTop="@dimen/_15dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/media"
+            android:textColor="@android:color/black" />
 
-        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/tv_photos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_media"
+            android:layout_alignStart="@id/tv_media"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/photos"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sp" />
+
+        <ImageView
+            android:id="@+id/iv_friends"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@id/iv_media"
+            android:layout_alignStart="@id/iv_media"
+            android:layout_marginTop="@dimen/_27dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/friends" />
+
+        <TextView
+            android:id="@+id/tv_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_photos"
+            android:layout_alignStart="@id/tv_photos"
+            android:layout_marginTop="@dimen/_15dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/friends"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tv_sync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_friends"
+            android:layout_alignStart="@id/tv_friends"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/sync"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sp" />
+
+        <ImageView
+            android:id="@+id/iv_languages"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@id/iv_friends"
+            android:layout_alignStart="@id/iv_friends"
+            android:layout_marginTop="@dimen/_27dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/languages" />
+
+        <TextView
+            android:id="@+id/tv_languages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_sync"
+            android:layout_alignStart="@id/tv_sync"
+            android:layout_marginTop="@dimen/_15dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/bahasa"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tv_languages1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_languages"
+            android:layout_alignStart="@id/tv_languages"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/english"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sp" />
+
+        <TextView
+            android:id="@+id/tv_others"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/background_general_setting"
+            android:layout_alignStart="@id/info"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/general"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_18sp" />
+
+        <ImageView
+            android:id="@+id/background_others"
+            android:layout_width="335dp"
+            android:layout_height="170dp"
+            android:layout_below="@id/tv_others"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10dp"
+            android:contentDescription="@string/background"
+            app:srcCompat="@drawable/background_white" />
+
+        <ImageView
+            android:id="@+id/iv_data"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@id/tv_others"
+            android:layout_alignStart="@id/iv_keep"
+            android:layout_marginTop="@dimen/_35dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/data" />
+
+        <TextView
+            android:id="@+id/tv_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_others"
+            android:layout_alignStart="@id/tv_languages1"
+            android:layout_marginTop="@dimen/_30dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/storage"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tv_network"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_data"
+            android:layout_alignStart="@id/tv_data"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/network"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sp" />
+
+        <ImageView
+            android:id="@+id/iv_help"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@id/iv_data"
+            android:layout_alignStart="@id/iv_data"
+            android:layout_marginTop="@dimen/_27dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/help" />
+
+        <TextView
+            android:id="@+id/tv_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_network"
+            android:layout_alignStart="@+id/tv_network"
+            android:layout_marginTop="@dimen/_15dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/help"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tv_faq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_help"
+            android:layout_alignStart="@id/tv_help"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/helpers"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sp" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_below="@id/iv_help"
+            android:layout_alignStart="@id/iv_help"
+            android:layout_marginTop="@dimen/_27dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/delete" />
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_faq"
+            android:layout_alignStart="@+id/tv_faq"
+            android:layout_marginTop="@dimen/_23dp"
+            android:fontFamily="@font/avanir5"
+            android:text="@string/delete"
+            android:textColor="@android:color/black" />
+
     </RelativeLayout>
 </ScrollView>

@@ -4,28 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
     tools:context=".activity.WelcomeActivity">
 
     <ImageView
         android:id="@+id/iv_cetup_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/cetup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cetup_grey"
-        android:contentDescription="@string/cetup" />
+        app:srcCompat="@drawable/cetup_grey" />
 
     <ImageView
         android:id="@+id/iv_cetup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20dp"
+        android:contentDescription="@string/cetup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_cetup_grey"
-        app:srcCompat="@drawable/cetup_icon"
-        android:contentDescription="@string/cetup" />
+        app:srcCompat="@drawable/cetup_icon" />
 
     <TextView
         android:id="@+id/tv_welcome"
@@ -33,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20dp"
         android:layout_marginTop="@dimen/_20dp"
+        android:fontFamily="@font/avanir5"
         android:text="@string/welcome"
         android:textColor="@android:color/black"
         android:textSize="@dimen/_20sp"
@@ -44,26 +44,26 @@
         android:id="@+id/tv_word1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginTop="3dp"
         android:text="@string/word1"
         app:layout_constraintStart_toStartOf="@+id/tv_welcome"
         app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
 
     <Button
         android:id="@+id/btn_welcome_sign_up"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_40dp"
-        android:background="@drawable/btn_red"
+        android:background="@drawable/btn_loginshape"
         android:text="@string/signup"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_word1" />
 
     <Button
         android:id="@+id/btn_welcome_signin"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10dp"
         android:background="@drawable/btn_red"
@@ -89,8 +89,9 @@
         android:layout_height="@dimen/_2dp"
         android:layout_marginBottom="@dimen/_40dp"
         android:background="@android:color/darker_gray"
+        android:contentDescription="@string/line"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_word2"
-        app:layout_constraintStart_toStartOf="@+id/tv_word2"
-        android:contentDescription="@string/line" />
+        app:layout_constraintStart_toStartOf="@+id/tv_word2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

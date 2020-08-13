@@ -44,4 +44,15 @@
     <dimen name="_18dp">18dp</dimen>
     <dimen name="_14dp">14dp</dimen>
     <dimen name="_55dp">55dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="_90dp">90dp</dimen>
+    <dimen name="_80dp">80dp</dimen>
+    <dimen name="_45dp">45dp</dimen>
+    <dimen name="_17dp">17dp</dimen>
+    <dimen name="_11sp">11sp</dimen>
+    <dimen name="_27dp">27dp</dimen>
 </resources>

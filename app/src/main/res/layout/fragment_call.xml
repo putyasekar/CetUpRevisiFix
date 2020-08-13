@@ -4,27 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F8F8"
     tools:context=".fragment.CallFragment">
 
-    <Button
-        android:id="@+id/btn_search"
-        android:layout_width="@dimen/_30dp"
-        android:layout_height="@dimen/_30dp"
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="335dp"
+        android:layout_height="@dimen/_45dp"
         android:layout_marginTop="@dimen/_15dp"
-        android:layout_marginEnd="@dimen/_15dp"
-        android:background="@drawable/circle_search"
-        android:drawableTop="@drawable/search_icon"
-        android:paddingTop="@dimen/_7dp"
+        android:autofillHints="@string/search"
+        android:background="@drawable/background_search"
+        android:drawableStart="@drawable/search_icon"
+        android:drawablePadding="@dimen/_12dp"
+        android:hint="@string/search"
+        android:inputType="text"
+        android:paddingStart="@dimen/_20dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/tv_background_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20dp"
+        android:contentDescription="@string/image"
+        app:layout_constraintStart_toStartOf="@+id/et_search"
+        app:layout_constraintTop_toBottomOf="@+id/et_search"
+        app:srcCompat="@drawable/background_image" />
+
+    <ImageView
+        android:id="@+id/iv_profile_call"
+        android:layout_width="@dimen/_70dp"
+        android:layout_height="@dimen/_70dp"
+        android:contentDescription="@string/background"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_background_img"
+        app:layout_constraintEnd_toEndOf="@+id/tv_background_img"
+        app:layout_constraintStart_toStartOf="@+id/tv_background_img"
+        app:layout_constraintTop_toTopOf="@+id/tv_background_img"
+        app:srcCompat="@drawable/profile" />
+
+    <TextView
+        android:id="@+id/tv_call_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7dp"
+        android:layout_marginBottom="@dimen/_25dp"
+        android:fontFamily="@font/avanir5"
+        android:text="@string/name"
+        android:textColor="#2D303E"
+        android:textSize="@dimen/_16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_background_img"
+        app:layout_constraintStart_toEndOf="@+id/tv_background_img"
+        app:layout_constraintTop_toTopOf="@+id/tv_background_img" />
+
+    <TextView
+        android:id="@+id/tv_time_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/time"
+        android:textColor="#2D303E"
+        android:textSize="@dimen/_14sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_call_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_call_name" />
+
+    <ImageView
+        android:id="@+id/iv_line"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25dp"
+        android:contentDescription="@string/line"
+        app:layout_constraintEnd_toEndOf="@+id/et_search"
+        app:layout_constraintTop_toBottomOf="@+id/tv_time_call"
+        app:srcCompat="@drawable/line" />
+
+    <Button
+        android:id="@+id/btn_call"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:background="@drawable/circle_call"
+        android:drawableTop="@drawable/videocall_icon"
+        android:paddingTop="@dimen/_10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_background_img"
+        app:layout_constraintEnd_toEndOf="@+id/iv_line"
+        app:layout_constraintTop_toTopOf="@+id/tv_background_img" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list_call"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_search" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_line"
+        tools:listitem="@layout/call_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
