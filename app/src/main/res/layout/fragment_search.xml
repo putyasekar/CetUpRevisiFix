@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragment.SearchFragment">
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="335dp"
+        android:layout_height="@dimen/_45dp"
+        android:layout_marginTop="@dimen/_15dp"
+        android:autofillHints="@string/search"
+        android:background="@drawable/background_search"
+        android:drawableStart="@drawable/search_icon"
+        android:drawablePadding="@dimen/_12dp"
+        android:hint="@string/search"
+        android:inputType="text"
+        android:paddingStart="@dimen/_20dp"
+        android:textColor="@color/colorAccent"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search_list"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_search"
+        android:layout_marginTop="@dimen/_10dp"
+        app:layout_constraintEnd_toEndOf="@+id/et_search"
+        app:layout_constraintStart_toStartOf="@+id/et_search"
+        app:layout_constraintTop_toBottomOf="@+id/et_search" />
+</androidx.constraintlayout.widget.ConstraintLayout>

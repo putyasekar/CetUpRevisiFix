@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,11 +20,12 @@ import com.sitiaisyah.idn.cetupapp.activity.IsiChatActivity
 import com.sitiaisyah.idn.cetupapp.activity.VisitProfileActivity
 import com.sitiaisyah.idn.cetupapp.model.ModelUser
 import com.sitiaisyah.idn.cetupapp.model.Users
-import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
-class UserAdapter(mContext: Context, mUsers: List<Users>, isChatCheck: Boolean) :
-    RecyclerView.Adapter<UserAdapter.ViewHolder?>() {
+class UserAdapter(
+    mContext: Context, mUsers: List<Users>,
+    isChatCheck: Boolean
+) : RecyclerView.Adapter<UserAdapter.ViewHolder?>() {
     private val mContext: Context
     private val mUsers: List<Users>
     private val isChatCheck: Boolean
@@ -38,6 +40,7 @@ class UserAdapter(mContext: Context, mUsers: List<Users>, isChatCheck: Boolean) 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapter.ViewHolder {
         val view: View = LayoutInflater.from(mContext)
             .inflate(R.layout.user_search_item_layout, parent, false)
+
         return ViewHolder(view)
     }
 
@@ -47,15 +50,15 @@ class UserAdapter(mContext: Context, mUsers: List<Users>, isChatCheck: Boolean) 
 
     override fun onBindViewHolder(holder: UserAdapter.ViewHolder, position: Int) {
         val user: Users = mUsers[position]
-        holder.userName.text = user!!.getUserName()
-        Picasso.get().load(user.getProfile()).placeholder(R.drawable.profile).into(holder.profile)
+        holder.userName.text = user.getUserName()
+        Glide.with(mContext).load(user.getProfile()).placeholder(R.drawable.profile)
+            .into(holder.profile)
 
         if (isChatCheck) {
             retrieveLastMessage(user.getUID(), holder.lastMessage)
         } else {
             holder.lastMessage.visibility = View.GONE
         }
-
         if (isChatCheck) {
             if (user.getStatus() == "online") {
                 holder.onlineStatus.visibility = View.VISIBLE
@@ -64,16 +67,16 @@ class UserAdapter(mContext: Context, mUsers: List<Users>, isChatCheck: Boolean) 
                 holder.onlineStatus.visibility = View.GONE
                 holder.offlineStatus.visibility = View.VISIBLE
             }
-        }
-
-        else {
+        } else {
             holder.onlineStatus.visibility = View.GONE
             holder.offlineStatus.visibility = View.GONE
         }
 
-        holder.itemView.setOnClickListener {
-            val options = arrayOf<CharSequence>("send message", "visit Profile")
 
+        holder.itemView.setOnClickListener {
+            val options = arrayOf<CharSequence>(
+                "Send Message", "Visit Profile"
+            )
             val builder: AlertDialog.Builder = AlertDialog.Builder(mContext)
             builder.setTitle("What do you want")
             builder.setItems(options, DialogInterface.OnClickListener { dialog, position ->
@@ -92,12 +95,11 @@ class UserAdapter(mContext: Context, mUsers: List<Users>, isChatCheck: Boolean) 
         }
     }
 
-    private fun retrieveLastMessage(Chatuid: String?, lastMessage: TextView) {
+    private fun retrieveLastMessage(chatUid: String?, lastMessage: TextView) {
         lastMsg = "defaultMsg"
 
         val firebaseUser = FirebaseAuth.getInstance().currentUser
-        val reference = FirebaseDatabase.getInstance()
-            .reference.child("Chats")
+        val reference = FirebaseDatabase.getInstance().reference.child("Chats")
         reference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
 
@@ -107,23 +109,24 @@ class UserAdapter(mContext: Context, mUsers: List<Users>, isChatCheck: Boolean) 
                 for (dataSnapshot in snapshots.children) {
                     val chat: ModelUser? = dataSnapshot.getValue(ModelUser::class.java)
                     if (firebaseUser != null && chat != null) {
-
-                        if (chat.getReceiver() == firebaseUser.uid!! && chat.getSender() == Chatuid ||
-                            chat.getReceiver() == Chatuid && chat.getSender() == firebaseUser!!.uid
+                        if (chat.getReceiver() == firebaseUser.uid &&
+                            chat.getSender() == chatUid ||
+                            chat.getReceiver() == chatUid &&
+                            chat.getSender() == firebaseUser.uid
                         ) {
                             lastMsg = chat.getMessage()!!
                         }
                     }
                 }
+
                 when (lastMsg) {
                     "defaultMsg" -> lastMessage.text = mContext.getString(R.string.no_message)
-                    "send you an Image" -> lastMessage.text =
-                        mContext.getString(R.string.image_send)
+                    "sent you an image" -> lastMessage.text =
+                        mContext.getString(R.string.image_sent)
                     else -> lastMessage.text = lastMsg
                 }
                 lastMsg = "defaultMsg"
             }
-
         })
     }
 
@@ -136,7 +139,7 @@ class UserAdapter(mContext: Context, mUsers: List<Users>, isChatCheck: Boolean) 
 
         init {
             userName = itemView.findViewById(R.id.tv_username_search)
-            profile = itemView.findViewById(R.id.profile_image)
+            profile = itemView.findViewById(R.id.iv_profile_search)
             onlineStatus = itemView.findViewById(R.id.iv_online)
             offlineStatus = itemView.findViewById(R.id.iv_offline)
             lastMessage = itemView.findViewById(R.id.tv_message_last)

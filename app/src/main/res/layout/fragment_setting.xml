@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/cv_profile_"
+            android:id="@+id/iv_profile_setting"
             android:layout_width="@dimen/_120dp"
             android:layout_height="@dimen/_120dp"
             android:layout_centerHorizontal="true"
@@ -23,10 +23,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_username_"
+            android:id="@+id/tv_username_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cv_profile_"
+            android:layout_below="@id/iv_profile_setting"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_10dp"
             android:fontFamily="@font/avanir5"
@@ -34,15 +34,15 @@
             android:textColor="@android:color/black"
             android:textSize="@dimen/_28sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/cv_profile_"
-            app:layout_constraintStart_toStartOf="@+id/cv_profile_"
-            app:layout_constraintTop_toBottomOf="@+id/cv_profile_" />
+            app:layout_constraintEnd_toEndOf="@+id/iv_profile_setting"
+            app:layout_constraintStart_toStartOf="@+id/iv_profile_setting"
+            app:layout_constraintTop_toBottomOf="@+id/iv_profile_setting" />
 
         <TextView
             android:id="@+id/tv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_username_"
+            android:layout_below="@+id/tv_username_setting"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:text="@string/text_user_status"

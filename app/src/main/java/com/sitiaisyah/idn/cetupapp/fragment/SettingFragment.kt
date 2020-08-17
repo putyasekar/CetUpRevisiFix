@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -21,47 +22,49 @@ import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.sitiaisyah.idn.cetupapp.R
 import com.sitiaisyah.idn.cetupapp.model.Users
+import kotlinx.android.synthetic.main.activity_edit_profile.view.iv_profile_setting
 import kotlinx.android.synthetic.main.fragment_setting.view.*
 
 class SettingFragment : Fragment() {
+
     var userReference: DatabaseReference? = null
     var firebaseUser: FirebaseUser? = null
     private val RequestCode = 438
     private var imageUri: Uri? = null
     private var storageRef: StorageReference? = null
     private var coverCheck: String? = ""
+    private var socialMediaCheck: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(
-            R.layout.fragment_setting,
-            container,
-            false
-        )
+        val view = inflater.inflate(R.layout.fragment_setting, container, false)
 
         firebaseUser = FirebaseAuth.getInstance().currentUser
         userReference =
             FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUser!!.uid)
-        storageRef = FirebaseStorage.getInstance().reference.child("UserImages")
+        storageRef = FirebaseStorage.getInstance().reference.child("User Images")
 
         userReference!!.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
 
             }
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val user: Users? = snapshot.getValue(Users::class.java)
+            override fun onDataChange(snapshots: DataSnapshot) {
+                if (snapshots.exists()) {
+                    val user: Users? = snapshots.getValue(Users::class.java)
 
                     if (context != null) {
-                        view.tv_username_.text = user!!.getUserName()
+                        view.tv_username_setting.text = user!!.getUserName()
+                        Glide.with(this@SettingFragment).load(user.getProfile())
+                            .into(view.iv_profile_setting)
                     }
                 }
             }
         })
-        view.cv_profile_.setOnClickListener {
+
+        view.iv_profile_setting.setOnClickListener {
             pickImage()
         }
         return view
@@ -76,35 +79,29 @@ class SettingFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RequestCode && resultCode == Activity.RESULT_OK && data!!.data != null)
+        if (requestCode == RequestCode && resultCode == Activity.RESULT_OK && data!!.data != null) {
             imageUri = data.data
-        Toast.makeText(
-            context,
-            getString(R.string.upload),
-            Toast.LENGTH_LONG
-        ).show()
-
-        uploadingImageToDatabase()
+            Toast.makeText(context, getString(R.string.upload), Toast.LENGTH_LONG).show()
+            uploadImageToDatabase()
+        }
     }
 
-    private fun uploadingImageToDatabase() {
+    private fun uploadImageToDatabase() {
         val progressDialog = ProgressDialog(context)
-        progressDialog.setMessage(getString(R.string.wait))
+        progressDialog.setMessage(getString(R.string.wait_for_upload))
         progressDialog.show()
 
-        val fileRef = storageRef!!.child(System.currentTimeMillis().toString() + ".jpg")
-        val uploadTask: StorageTask<*>
+        val fileRef = storageRef!!.child(System.currentTimeMillis().toString() + "jpg")
+        var uploadTask: StorageTask<*>
         uploadTask = fileRef.putFile(imageUri!!)
 
         uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
             if (!task.isSuccessful) {
-                task.exception.let {
-                    throw it!!
+                task.exception?.let {
+                    throw it
                 }
             }
-
             return@Continuation fileRef.downloadUrl
-
         }).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val downloadUrl = task.result
@@ -116,11 +113,12 @@ class SettingFragment : Fragment() {
                     userReference!!.updateChildren(mapCoverImage)
                     coverCheck = ""
                 } else {
-                    val mapProfiImage = HashMap<String, Any>()
-                    mapProfiImage["profile"] = url
-                    userReference!!.updateChildren(mapProfiImage)
+                    val mapProfileImage = HashMap<String, Any>()
+                    mapProfileImage["profile"] = url
+                    userReference!!.updateChildren(mapProfileImage)
                     coverCheck = ""
                 }
+
                 progressDialog.dismiss()
             }
         }

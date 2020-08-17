@@ -9,8 +9,6 @@ class Token {
         this.token = token
     }
 
-    // getter and setter
-
     fun getToken(): String? {
         return token
     }

@@ -97,4 +97,12 @@
     <string name="search">Search</string>
     <string name="keep1">Your Saved Files</string>
     <string name="english">English</string>
+    <string name="cetUpTitle">CetUp</string>
+    <string name="menu_home">Home Fragment</string>
+    <string name="menu_profile">Profile</string>
+    <string name="pick_image">Pick Image</string>
+    <string name="write_message_first">Please write a message</string>
+    <string name="image_upload">Upload Image</string>
+    <string name="wait_for_upload">Waiting for Uploading</string>
+    <string name="image_sent">Send Image</string>
 </resources>

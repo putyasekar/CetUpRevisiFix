@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8"
+    tools:showIn="@layout/app_bar_main">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/_30dp"
+        android:layout_height="@dimen/_30dp"
+        android:layout_marginStart="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_15dp"
+        android:contentDescription="@string/menu"
+        android:src="@drawable/ic_baseline_clear_all_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_chats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_70dp"
+        android:text="@string/chats"
+        android:textColor="#2D303E"
+        android:textSize="@dimen/_20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/btn_search"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <TextView
+        android:id="@+id/tv_groups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_70dp"
+        android:text="@string/groups"
+        android:textColor="#2D303E"
+        android:textSize="@dimen/_14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_chats"
+        app:layout_constraintEnd_toStartOf="@+id/btn_search"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/tv_chats" />
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="@dimen/_30dp"
+        android:layout_height="@dimen/_30dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:background="@drawable/circle_search"
+        android:drawableTop="@drawable/search_icon"
+        android:paddingTop="@dimen/_7dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_groups"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_groups" />
+
+    <ImageView
+        android:id="@+id/iv_jasmin"
+        android:layout_width="@dimen/_100dp"
+        android:layout_height="@dimen/_100dp"
+        android:layout_marginStart="@dimen/_20dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/jasmin"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_nisa"
+        app:layout_constraintStart_toEndOf="@+id/iv_aisyah"
+        app:layout_constraintTop_toTopOf="@+id/iv_nisa" />
+
+    <ImageView
+        android:id="@+id/iv_nisa"
+        android:layout_width="@dimen/_100dp"
+        android:layout_height="@dimen/_100dp"
+        android:layout_marginStart="@dimen/_30dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/nisa"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_putya"
+        app:layout_constraintStart_toEndOf="@+id/btn_add_story"
+        app:layout_constraintTop_toTopOf="@+id/iv_putya" />
+
+    <ImageView
+        android:id="@+id/iv_putya"
+        android:layout_width="@dimen/_100dp"
+        android:layout_height="@dimen/_100dp"
+        android:layout_marginStart="@dimen/_40dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/diki"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_aisyah"
+        app:layout_constraintStart_toStartOf="@+id/iv_aisyah"
+        app:layout_constraintTop_toTopOf="@+id/iv_aisyah" />
+
+    <ImageView
+        android:id="@+id/iv_aisyah"
+        android:layout_width="@dimen/_100dp"
+        android:layout_height="@dimen/_100dp"
+        android:layout_marginStart="@dimen/_25dp"
+        android:layout_marginTop="@dimen/_20dp"
+        android:contentDescription="@string/image"
+        android:src="@drawable/aisyah"
+        app:layout_constraintStart_toStartOf="@+id/btn_add_story"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btn_add_story"
+        android:layout_width="@dimen/_75dp"
+        android:layout_height="@dimen/_75dp"
+        android:layout_marginTop="@dimen/_30dp"
+        android:background="@drawable/circle_story"
+        android:drawableTop="@drawable/camera_icon"
+        android:paddingTop="@dimen/_23dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/btn_add_story1"
+        android:layout_width="@dimen/_20dp"
+        android:layout_height="@dimen/_20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/circle_add"
+        android:drawableTop="@drawable/add_icon"
+        android:paddingTop="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_aisyah"
+        app:layout_constraintStart_toStartOf="@+id/iv_aisyah"
+        app:layout_constraintTop_toTopOf="@+id/btn_add_story" />
+
+    <TextView
+        android:id="@+id/tv_view_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:text="@string/view_all"
+        android:textSize="@dimen/_14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_jasmin"
+        app:layout_constraintEnd_toStartOf="@+id/iv_view_all"
+        app:layout_constraintTop_toTopOf="@+id/iv_jasmin" />
+
+    <ImageView
+        android:id="@+id/iv_view_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/background"
+        android:src="@drawable/rectangle_10"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_view_all"
+        app:layout_constraintEnd_toEndOf="@+id/btn_search"
+        app:layout_constraintTop_toTopOf="@+id/tv_view_all" />
+
+    <TextView
+        android:id="@+id/tv_result_view_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/result"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_view_all"
+        app:layout_constraintEnd_toEndOf="@+id/iv_view_all"
+        app:layout_constraintStart_toStartOf="@+id/iv_view_all"
+        app:layout_constraintTop_toTopOf="@+id/iv_view_all" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list_chat"
+        android:layout_width="409dp"
+        android:layout_height="564dp"
+        android:layout_marginTop="@dimen/_15dp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_view_all"
+        app:layout_constraintStart_toStartOf="@+id/btn_add_story"
+        app:layout_constraintTop_toBottomOf="@+id/iv_nisa" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

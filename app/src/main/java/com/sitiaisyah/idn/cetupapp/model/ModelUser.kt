@@ -38,7 +38,7 @@ class ModelUser {
         return message
     }
 
-    fun setMessage(sender: String?) {
+    fun setMessage(message: String?) {
         this.message = message!!
     }
 
@@ -50,7 +50,7 @@ class ModelUser {
         this.receiver = receiver!!
     }
 
-    fun isSeen(): Boolean? {
+    fun isSeen(): Boolean {
         return iseen
     }
 
@@ -66,11 +66,11 @@ class ModelUser {
         this.url = url!!
     }
 
-    fun getMessageID(): String? {
+    fun getMessageId(): String? {
         return messageId
     }
 
-    fun setMessageID(messageId: String?) {
+    fun setMessageId(messageId: String?) {
         this.messageId = messageId!!
     }
 }

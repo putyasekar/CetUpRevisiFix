@@ -16,10 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.sitiaisyah.idn.cetupapp.R
-import com.sitiaisyah.idn.cetupapp.fragment.CallFragment
-import com.sitiaisyah.idn.cetupapp.fragment.ChatFragment
-import com.sitiaisyah.idn.cetupapp.fragment.MenuFragment
-import com.sitiaisyah.idn.cetupapp.fragment.SettingFragment
+import com.sitiaisyah.idn.cetupapp.fragment.*
 import com.sitiaisyah.idn.cetupapp.model.Users
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -51,9 +48,10 @@ class MainActivity : AppCompatActivity() {
             ViewPagerAdapter(
                 supportFragmentManager
             )
+
         viewPagerAdapter.addFragment(ChatFragment(), "chats")
         viewPagerAdapter.addFragment(CallFragment(), "call")
-        viewPagerAdapter.addFragment(MenuFragment(), "menu")
+        viewPagerAdapter.addFragment(SearchFragment(), "search")
         viewPagerAdapter.addFragment(SettingFragment(), "setting")
 
         viewPager.adapter = viewPagerAdapter

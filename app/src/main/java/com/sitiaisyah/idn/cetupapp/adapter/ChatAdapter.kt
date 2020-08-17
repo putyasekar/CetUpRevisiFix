@@ -151,7 +151,7 @@ class ChatAdapter(mContext: Context, mChatList: List<ModelUser>, imageUrl: Strin
 
     private fun deleteSentMessage(position: Int, holder: ViewHolder) {
         val reff = FirebaseDatabase.getInstance().reference.child("Chats")
-            .child(mChatList.get(position).getMessageID()!!)
+            .child(mChatList.get(position).getMessageId()!!)
             .removeValue()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {

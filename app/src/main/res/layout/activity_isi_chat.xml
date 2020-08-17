@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e6e6e6"
     tools:context=".activity.IsiChatActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/barLayout_message_chat"
+        android:id="@+id/appbar_chat"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_90dp"
+        android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_message_chat"
+            android:id="@+id/toolbar_chat"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_90dp"
-            android:background="@android:color/white"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image_mchat"
+                android:id="@+id/iv_profile_chat"
                 android:layout_width="@dimen/_32dp"
                 android:layout_height="@dimen/_32dp"
                 android:src="@drawable/profile" />
 
             <TextView
-                android:id="@+id/tv_username_mchat"
+                android:id="@+id/tv_username_chat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_26dp"
+                android:fontFamily="@font/avanir5"
                 android:text="@string/text_user_name"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="@dimen/_18sp"
                 android:textStyle="bold" />
 
@@ -50,52 +50,60 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_isi_chat"
-        android:layout_width="374dp"
-        android:layout_height="192dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barLayout_message_chat" />
-
-    <EditText
-        android:id="@+id/et_message"
-        android:layout_width="399dp"
-        android:layout_height="73dp"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="@dimen/_10dp"
-        android:autofillHints="@string/message"
-        android:background="@drawable/background_white"
-        android:drawablePadding="@dimen/_10dp"
-        android:hint="@string/write_message_here"
-        android:inputType="text"
-        android:paddingStart="@dimen/_20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="RtlSymmetry" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rv_bottom"
+        android:layout_width="345dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="@dimen/_7dp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_send_message"
-        app:layout_constraintEnd_toStartOf="@+id/iv_send_message"
-        app:layout_constraintTop_toTopOf="@+id/iv_send_message"
-        app:srcCompat="@drawable/mic" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/_10dp">
 
-    <ImageView
-        android:id="@+id/iv_send_message"
-        android:layout_width="@dimen/_23dp"
-        android:layout_height="@dimen/_23dp"
-        android:layout_marginEnd="@dimen/_20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/et_message"
-        app:layout_constraintEnd_toEndOf="@+id/et_message"
-        app:layout_constraintTop_toTopOf="@+id/et_message"
-        app:srcCompat="@drawable/send" />
+        <EditText
+            android:id="@+id/et_message"
+            android:layout_width="345dp"
+            android:layout_height="@dimen/_80dp"
+            android:autofillHints="@string/message"
+            android:background="@drawable/background_white"
+            android:hint="@string/write_message_here"
+            android:inputType="text"
+            android:paddingStart="@dimen/_50dp"
+            tools:ignore="RtlSymmetry" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/iv_send_message"
+            android:layout_marginTop="@dimen/_23dp"
+            android:layout_marginEnd="@dimen/_30dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/mic" />
+
+        <ImageView
+            android:id="@+id/iv_send_message"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_27dp"
+            android:layout_marginEnd="@dimen/_20dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/send" />
+
+        <ImageView
+            android:id="@+id/iv_attact_image_file"
+            android:layout_width="@dimen/_23dp"
+            android:layout_height="@dimen/_23dp"
+            android:layout_marginStart="@dimen/_20dp"
+            android:layout_marginTop="@dimen/_27dp"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/attachone" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_chat_message"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rv_bottom"
+        android:layout_below="@+id/appbar_chat" />
+</RelativeLayout>
